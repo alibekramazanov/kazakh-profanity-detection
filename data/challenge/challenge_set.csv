@@ -1,0 +1,49 @@
+id,text,label,domain,label_method,ru_profanity,rule_hits,is_synthetic,note
+ch_p00,"Телефон екі күнде істен шықты, қотақбас сатушы ақшамды қайтармай жүр",1,challenge_market,handwritten,0,котак,1,plain profanity
+ch_p01,"Шешеңнің амы, курьер үш сағат кешікті",1,challenge_market,handwritten,0,,1,curse formula
+ch_p02,"Кроссовка бір аптада жыртылды, боқ сапа",1,challenge_market,handwritten,0,,1,боқ as evaluation
+ch_p03,"Қ*тақ сияқты тауар, суреттегіге мүлде ұқсамайды",1,challenge_market,handwritten,0,masked:котак,1,masked
+ch_p04,"Сатушы жалап екен, жауап та бермейді",1,challenge_market,handwritten,0,,1,insult word
+ch_p05,"Шешесігейін, зарядтағыш қызып кетеді",1,challenge_market,handwritten,0,сик_verb,1,curse verb
+ch_p06,"qotaqbas magazin, tauar kelmedi",1,challenge_market,handwritten,0,котак,1,Latin transliteration
+ch_p07,Бұл шаңсорғышты шығарған адамның көтіне тығу керек,1,challenge_market,handwritten,0,котин,1,көт idiom
+ch_p08,"Наушник сыртынан әдемі, іші боқ",1,challenge_market,handwritten,0,,1,боқ as evaluation
+ch_p09,Орап салған қотақбастар қорапты езіп жіберген,1,challenge_market,handwritten,0,котак,1,plain profanity
+ch_p10,"Ақшаны алып алды да, тауар жоқ. Амыңды сігейін сендердің",1,challenge_market,handwritten,0,сик_verb;ам_forms,1,curse formula
+ch_p11,"с**ейін мұндай сапаны, бір рет жудым түсі кетті",1,challenge_market,handwritten,0,masked:сигейин,1,masked curse verb
+ch_p12,"Каспи арқылы алдым, қаншық сатушы басқа түсін жіберді",1,challenge_market,handwritten,0,каншык,1,insult word
+ch_p13,Тамаша тауар деп мақтаған қотақбастарға сенбеңдер,1,challenge_market,handwritten,0,котак,1,plural with case suffix
+ch_p14,"Көт сияқты кресло, отырсаң сықырлайды",1,challenge_market,handwritten,0,,1,көт as evaluation
+ch_p15,"Ж@лаптар, ақшамды қайтарыңдар!",1,challenge_market,handwritten,0,masked:жалаптар,1,masked insult
+ch_p16,"Сапасы қотақ, бағасына татымайды",1,challenge_market,handwritten,0,котак,1,plain profanity
+ch_p17,"Мынау кофеварка емес, нағыз боқ",1,challenge_market,handwritten,0,,1,боқ as evaluation
+ch_p18,"Әкеңнің аузын сгейін, үш рет тапсырыс бердім бәрі сынық келді",1,challenge_market,handwritten,0,curse_auzyn,1,"curse formula, Russian letters"
+ch_p19,"Shesheniń amy, telefon qyzyp ketedi",1,challenge_market,handwritten,0,,1,Kazakh Latin (2021) script
+ch_p20,"Тауар жақсы екен, бірақ курьер қотақбас, есікті тепті",1,challenge_market,handwritten,0,котак,1,positive review with profanity
+ch_p21,"Көйлек керемет, амы шыққан сапа екен",1,challenge_market,handwritten,0,,1,vulgar intensifier in praise
+ch_p22,КОТАКБАС МАГАЗИН АҚШАМДЫ ҚАЙТАР,1,challenge_market,handwritten,0,котак,1,"caps, Russian letters"
+ch_p23,"Котагымды жеген курьер, бір апта күттім",1,challenge_market,handwritten,0,котак,1,inflected form
+ch_n00,"Тауар суреттегідей, жылдам жеткізді, рахмет!",0,challenge_market,handwritten,0,,1,positive
+ch_n01,"Өте нашар сапа, бір аптада сынды. Ақшамды қайтарыңдар!",0,challenge_market,handwritten,0,,1,"negative, not profane"
+ch_n02,"Сатушы алаяқ, тауар келмеді, ешкімге кеңес бермеймін",0,challenge_market,handwritten,0,,1,"angry, not profane"
+ch_n03,"Жөргек жұмсақ, баланың көтенін қызартпайды, иісі жоқ",0,challenge_market,handwritten,0,,1,anatomical word in diaper review
+ch_n04,"Код келмеді, тапсырысты рәсімдей алмадым",0,challenge_market,handwritten,0,,1,кот/код homograph context
+ch_n05,Ойындағы жаңа скин керемет екен,0,challenge_market,handwritten,0,,1,скин (game skin)
+ch_n06,"Жақсы тауар, пиздец ұнады",0,challenge_market,handwritten,1,,1,Russian obscenity only (out of scope)
+ch_n07,"Сука, тағы кешікті",0,challenge_market,handwritten,1,,1,Russian obscenity only (out of scope)
+ch_n08,"Сиқырлы ертегілер кітабы, балаларға ұнады",0,challenge_market,handwritten,0,,1,сиқыр homonym
+ch_n09,"Есік құлпы сапалы, орнату оңай",0,challenge_market,handwritten,0,,1,есік contains -сік-
+ch_n10,"Ақымақ сияқты нұсқаулық жазылған, ештеңе түсінікті емес",0,challenge_market,handwritten,0,,1,"insult, not obscene"
+ch_n11,"Котқа арналған тамақ, мысығым жақсы жейді",0,challenge_market,handwritten,0,,1,кот = cat
+ch_n12,"Боксқа арналған қолғап, өлшемі сәйкес келді",0,challenge_market,handwritten,0,,1,бокс
+ch_n13,"Сапасы ж*қсы, бірақ қорабы жыртық келді",0,challenge_market,handwritten,0,,1,masked ordinary word
+ch_n14,"Бағасы қымбат, бірақ сапасы тұрады",0,challenge_market,handwritten,0,,1,neutral
+ch_n15,"Kerek zat eken, satushyga rahmet",0,challenge_market,handwritten,0,,1,"Latin, clean"
+ch_n16,"Түсі өңіп кетті, екінші рет алмаймын",0,challenge_market,handwritten,0,,1,negative
+ch_n17,"Қотыр сияқты дақтар пайда болды, алмаңыздар",0,challenge_market,handwritten,0,,1,қотыр (scab) near қотақ
+ch_n18,"Амал жоқ, басқа дүкеннен алуға тура келді",0,challenge_market,handwritten,0,,1,амал near ам
+ch_n19,"Аман-есен жетті, орауы мықты",0,challenge_market,handwritten,0,,1,аман near ам
+ch_n20,"Сигнал жоқ, антенна әлсіз",0,challenge_market,handwritten,0,,1,сигнал near сіг-
+ch_n21,"Көтеру оңай, жеңіл чемодан",0,challenge_market,handwritten,0,,1,көтеру near көт
+ch_n22,"Шешеме сыйлыққа алдым, қатты ұнады",0,challenge_market,handwritten,0,,1,шеше in a clean sentence
+ch_n23,"Боқтайтын пікірлерге сенбеңдер, тауар жақсы",0,challenge_market,handwritten,0,,1,talks about swearing (meta)

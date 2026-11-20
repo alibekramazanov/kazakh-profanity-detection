@@ -1,0 +1,8 @@
+# Installed on top of the Kaggle / Colab image (their GPU build of torch>=2.6, numpy, pandas,
+# scikit-learn and matplotlib are used). Exact versions of the training run are saved to
+# outputs/results/environment.json.
+transformers==5.23.0
+tokenizers==0.23.3
+huggingface_hub==2.4.0
+safetensors==0.8.0
+datasketch==1.6.5

@@ -1,0 +1,11 @@
+# Full local environment (tested on Python 3.13, CPU). For GPU, install the torch build for your CUDA first.
+torch==2.15.0
+transformers==5.23.0
+tokenizers==0.23.3
+huggingface_hub==2.4.0
+safetensors==0.8.0
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.1
+datasketch==1.6.5
+matplotlib==3.11.2

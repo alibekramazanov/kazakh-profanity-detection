@@ -1,0 +1,57 @@
+{
+  "seed": 42,
+  "kazsandra_rows": 175158,
+  "label_method_counts_full": {
+    "rule_negative": 173466,
+    "rule_strong": 1278,
+    "manual": 398,
+    "manual_drop": 16
+  },
+  "exact_duplicates_removed": 2426,
+  "near_duplicate_groups_with_2plus": 235,
+  "rows_in_near_duplicate_groups": 617,
+  "splits": {
+    "train": {
+      "total": 17120,
+      "profanity_1": 1635,
+      "clean_0": 15485,
+      "synthetic": 899
+    },
+    "val": {
+      "total": 2028,
+      "profanity_1": 148,
+      "clean_0": 1880,
+      "synthetic": 0
+    },
+    "test": {
+      "total": 2028,
+      "profanity_1": 148,
+      "clean_0": 1880,
+      "synthetic": 0
+    }
+  },
+  "total_rows": 21176,
+  "total_real": 20277,
+  "class_distribution_real": {
+    "0": 18795,
+    "1": 1482
+  },
+  "synthetic_types": {
+    "masked_clean": 300,
+    "latin_translit": 300,
+    "masked_profanity": 299
+  },
+  "domain_counts_real": {
+    "appstore": 11344,
+    "market": 8007,
+    "mapping": 564,
+    "bookstore": 362
+  },
+  "ru_profanity_label0_real": 662,
+  "label_method_counts_selected": {
+    "rule_negative": 18660,
+    "rule_strong": 1230,
+    "synthetic": 899,
+    "manual": 387
+  }
+}
