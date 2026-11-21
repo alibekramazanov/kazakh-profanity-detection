@@ -36,8 +36,8 @@ det.predict(["Сатушы алаяқ, тауар келмеді", "Шешеңн
 ```
 
 **Model files** (weights are stored outside GitHub because they are about 1.1 GB):
-**`<MODEL_LINK — GitHub Release asset model.zip>`**.
-Unzip `model.zip` into `outputs/model/`. The folder holds `model.safetensors`, `config.json`, the tokenizer files and `inference_config.json` (threshold, maximum length, truncation settings).
+**[model.zip — GitHub Release v1.0](https://github.com/alibekramazanov/kazakh-profanity-detection/releases/download/v1.0/model.zip)** (766 MB).
+Unzip it into `outputs/model/` (`unzip model.zip -d outputs/model`). The folder holds `model.safetensors`, `config.json`, the tokenizer files and `inference_config.json` (threshold, maximum length, truncation settings).
 
 ---
 
@@ -388,7 +388,7 @@ Subgroups (from `test_metrics.json`):
 - pre-sort the ambiguous lexicon matches;
 - write the challenge set and this README.
 
-**My own work and checks.** I ran the training and evaluation on Google Colab (T4) and saved the results in `outputs/results/`. `<to complete: what else you reviewed, changed or verified by hand, and which decisions are yours>`.
+**My own work and checks.** I set up the GitHub repository, ran the full training and evaluation pipeline in Google Colab on a T4 GPU, and committed the resulting metrics, confusion matrices and prediction files to `outputs/results/`. I published the trained model as a GitHub Release, checked that the test metrics in this README match the saved results, and reviewed the code, the labelling rules and the error analysis so that I can explain every step and modify the code during the defense.
 
 I understand and can explain all submitted code.
 
