@@ -18,7 +18,7 @@ Each prediction also comes with `p(profanity)`, the model's probability for clas
 ## 1. Quick start: predict without retraining
 
 ```bash
-git clone https://github.com/<github-user>/kazakh-profanity-detection.git
+git clone https://github.com/alibekramazanov/kazakh-profanity-detection.git
 cd kazakh-profanity-detection
 pip install -r requirements.txt
 # get the trained model (see "Model files" below), then:
@@ -36,7 +36,7 @@ det.predict(["Сатушы алаяқ, тауар келмеді", "Шешеңн
 ```
 
 **Model files** (weights are stored outside GitHub because they are about 1.1 GB):
-`<link to the Hugging Face repo or GitHub Release model.zip — filled in after training>`.
+**`<MODEL_LINK — GitHub Release asset model.zip>`**.
 Unzip `model.zip` into `outputs/model/`. The folder holds `model.safetensors`, `config.json`, the tokenizer files and `inference_config.json` (threshold, maximum length, truncation settings).
 
 ---
@@ -273,46 +273,106 @@ python -m src.predict  --model_dir outputs/model --text "..."
 
 ## 6. Results
 
-> **To be filled in from `outputs/results/` after the Kaggle run** (test metrics, confusion matrix, training curve, challenge set, error analysis).
+**Training run.** Google Colab, one Tesla T4 GPU, about 127 s per epoch. The best validation F1 was reached at epoch 3, so the epoch-3 model was saved.
+Run versions: torch 2.14.1+cu130, transformers 5.23.0, scikit-learn 1.6.1 (`outputs/results/environment.json`).
 
-### 6.1 Test set: one evaluation, threshold from validation
+| epoch | train loss | val PR-AUC | val F1 @0.5 | best val threshold | val P / R / F1 at that threshold |
+|---|---|---|---|---|---|
+| 1 | 0.189 | 0.978 | 0.927 | 0.50 | 0.909 / 0.946 / 0.927 |
+| 2 | 0.064 | 0.990 | 0.944 | 0.80 | 0.947 / 0.959 / 0.953 |
+| **3** | 0.032 | 0.987 | 0.963 | **0.84** | **0.973 / 0.959 / 0.966** |
+| 4 | 0.022 | 0.988 | 0.966 | 0.50 | 0.973 / 0.959 / 0.966 (a tie, so not a strict improvement) |
+
+PR-AUC is the area under the precision–recall curve: the average precision over all thresholds. It does not depend on one chosen threshold. On validation, threshold 0.84 and 0.50 differ by only one false positive (F1 0.966 vs 0.963), so the result is not sensitive to the exact threshold.
+
+### 6.1 Test set: one evaluation, threshold 0.84 from validation
 
 | metric (class 1 = profanity) | value |
 |---|---|
-| test examples | 2,028 (148 profane / 1,880 clean) |
-| precision | … |
-| recall | … |
-| F1 | … |
-| PR-AUC (area under the precision–recall curve) | … |
-| threshold (from validation) | … |
+| test examples | **2,028** (148 profane / 1,880 clean) |
+| precision = TP / (TP + FP) | **0.966** (140 / 145) |
+| recall = TP / (TP + FN) | **0.946** (140 / 148) |
+| F1 = 2PR / (P + R) | **0.956** |
+| PR-AUC | 0.979 |
+| ROC-AUC | 0.998 |
+| accuracy | 0.994 (not informative with 93 % clean comments) |
+| for reference, threshold 0.5 | P 0.940, R 0.953, F1 0.946 |
 
-Confusion matrix (`outputs/results/test_confusion_matrix.png`):
+![test confusion matrix](outputs/results/test_confusion_matrix.png)
 
 | | predicted clean | predicted profanity |
 |---|---|---|
-| **true clean** | TN = … | FP = … |
-| **true profanity** | FN = … | TP = … |
+| **true clean** | TN = 1,875 | FP = 5 |
+| **true profanity** | FN = 8 | TP = 140 |
+
+Subgroups (from `test_metrics.json`):
+
+| subgroup | n | profane | FP | FN | note |
+|---|---|---|---|---|---|
+| Appstore | 1,138 | 147 | 4 | 8 | P 0.972, R 0.946 |
+| Market (product reviews) | 809 | 0 | 1 | 0 | false-positive rate 0.12 %; recall cannot be measured here |
+| Mapping + Bookstore | 81 | 1 | 0 | 0 | |
+| manually labelled ambiguous words | 36 | 21 | 1 | 2 | P 0.95, R 0.905 |
+| clean, but Russian obscenity only | 59 | 0 | 3 | – | FP rate 5.1 %; 2 of the 3 are label errors (6.3, item 1) |
+| comments truncated to 128 subwords | 13 | | | | |
+
+**Challenge set** (48 hand-written marketplace comments, synthetic): precision 0.95, recall 0.79, F1 0.86 (TP 19, FN 5, FP 1, TN 23).
+- Every common-word case was caught, including masked «Қ\*тақ», Latin «qotaqbas» and «Shesheniń amy», and profanity inside a positive review.
+- The other 23 clean comments were all correctly predicted 0: angry reviews, «код келмеді», «скин», «сиқыр», «есік», «аман», «көтеру», «пиздец ұнады»...
+- The misses were the rare words: «жалап», «Ж@лаптар», «қаншық», the masked «с\*\*ейін», and «Шешесігейін» (p = 0.76, just below the threshold).
 
 ### 6.2 What the errors mean for review moderation
 
 - **False positive (FP):** a clean review is flagged as profane. If flags auto-hide reviews, an honest, often *negative* review disappears. That hurts customers who need that information and looks like censorship of complaints. It also wastes moderator time.
 - **False negative (FN):** a review with Kazakh profanity is published. Other customers, including children, see obscene language next to the product, and the platform's quality suffers.
 - **Which matters more** depends on how the model is used:
-  - If its flags go to a **human moderation queue**, FNs matter more: a FP costs a few seconds of a moderator's time, a FN stays published. Use a lower threshold and prefer recall.
-  - If the model **removes reviews automatically**, FPs matter more. Use a higher threshold and prefer precision.
+  - If its flags go to a **human moderation queue**, FNs matter more: a FP costs a few seconds of a moderator's time, a FN stays published. Use a lower threshold. At 0.5 the test recall rises to 0.953 and precision drops to 0.940.
+  - If the model **removes reviews automatically**, FPs matter more. Keep 0.84 or raise it.
 
-  The saved threshold maximises F1, a balance between the two; `--threshold` in `src/predict.py` changes it without retraining.
+  `--threshold` in `src/predict.py` changes this without retraining.
 
-### 6.3 Error analysis
+### 6.3 Error analysis (all 13 test errors are in `outputs/results/test_false_*.csv`)
 
-> At least three concrete test mistakes, their likely causes and a practical fix — filled in after the run, from `test_false_positives.csv` / `test_false_negatives.csv`.
+1. **Two "false positives" are label errors: the model is right and the lexicon was wrong.**
+   - «…малдың ғана праграмасының ішіне **сіген** итің…» (p = 0.9998): «сіген» is a past form of the obscene verb, but the suffix *-ген* was missing from the rule.
+   - «Бля шешен **амсин** оин…» (p = 0.998): «амсин» is the Russian-keyboard spelling of «амсың». The rule only had the «ы» spelling.
 
----
+   *Cause:* pre-labels from a fixed word list cannot cover every inflection and spelling. The fine-tuned model generalised from subword pieces (сіг-, ам-) and found them. *Fix:* add both forms to `src/lexicon.py`, and in the next labelling round review every high-confidence "FP" as a possible label error (confident learning). With these two relabelled, test precision would be 142/145 = 0.979.
+
+2. **Rare obscene words are missed (5 of 8 FNs).**
+   - «Ташакбас читқа көмектеседі…» (p = 0.0004) and «…ташақтар блять…» (p = 0.0015);
+   - «Өте керемет **амшық** оиын» (p = 0.0008);
+   - «шең **амына** кіріп кет» (p = 0.046);
+   - «Амшық қаншық» (p = 0.68, caught at 0.5).
+
+   The same happens on the challenge set with «жалап» and «қаншық».
+
+   *Cause:* the positives are dominated by one word family. «қотақ» appears in 759 real training comments, while «ташақ» appears in 6, «қаншық» in 7, «жалап» in 9 and «амшық» in 21. The model has effectively learned "қотақ-like ⇒ 1" and has seen too few examples of the other words. In «Өте керемет амшық оиын» the strongly positive context («өте керемет») also pushes the probability down.
+
+   *Fix:* collect or label more comments for each rare word, for example by searching more data sources for the lexicon terms. Alternatively, add synthetic training sentences that put rare words into many review templates, or use class-balanced sampling per word family. In production, a high-precision lexicon "OR" rule can catch known rare words that the model misses.
+
+3. **A literal anatomical word in a product review is flagged.** «Өте жақсы подгузники, жұмсақ… баланың **көтенін** құрғақ ұстайды» (p = 0.96, label 0). The same error appears on the challenge set: «Жөргек жұмсақ, баланың көтенін қызартпайды» (p = 0.99).
+
+   *Cause:* in training, «көтен» nearly always appears as an insult in app reviews. Only two diaper reviews show the literal use. The model learned the word, not the context.
+
+   *Fix:* this is exactly the product-review domain shift. Add more literal or anatomical hard negatives from marketplace reviews: baby products, medical and hygiene goods. Report a per-category false-positive rate before deployment.
+
+4. **Insults and Russian obscenities without Kazakh obscene words are flagged.**
+   - «Мал праграмма… **ешекбас** жемқор **бля**» (p = 0.92);
+   - the test subgroup "clean, but Russian obscenity only" has 3 FPs out of 59 (5.1 %). Two of the three are the label errors from item 1, so only this one is a real scope error (1/59).
+
+   *Cause:* these comments look very similar to the profane ones (angry, insulting, mixed with Russian мат). Only my scope rule, "Kazakh obscene vocabulary only", separates them. *Fix:* either keep the rule and add more such hard negatives, or, closer to real moderation needs, change the task to three classes: Kazakh obscenity / Russian obscenity / clean.
+
+5. **A clean game review flagged with no obvious reason.** «Кішкентай кезден бастап ойнаймын мыхт ойнго сөз жох» (p = 0.94).
+
+   *Cause:* probably a spurious cue. Short, misspelled game reviews written phonetically («мыхт», «ойнго», «жох») resemble the style of many profane app reviews. *Fix:* more clean noisy-spelling app reviews among the negatives. Also check what the prediction relies on, with token-level attribution such as Integrated Gradients, before trusting it.
+
+**Summary.** On frequent profanity the model is very reliable, robust to masking, script and spelling. Its weak points are rare obscene words, literal uses of vulgar words in product reviews, and the Kazakh-only scope boundary. All three point to *data* as the next improvement, not a bigger model.
 
 ## 7. Limitations
 
 - **Labels come partly from rules.** Strong-rule matches were spot-checked, not all read. Unlisted slang is labelled 0 by default, so some model "false positives" may actually be label errors.
-- **Domain shift.** The real profane examples are app reviews. Product-review profanity is measured only on the 48-comment synthetic challenge set, which is too small for precise numbers.
+- **Domain shift.** The real profane examples are app reviews. Product-review profanity is measured only on the 48-comment synthetic challenge set (F1 0.86), which is too small for precise numbers. Section 6.3 shows a concrete product-review failure (diaper reviews).
 - **Scope decision.** Comments with Russian-only obscenities are labelled 0. A real moderation system would probably want them flagged as well. That needs a second label or a relabelling of the `ru_profanity` rows.
 - **Hostility is not profanity.** Rude but non-obscene insults (мал, ақымақ) are 0 by design, so this model is not a general toxicity detector.
 - **Names in review text.** First names mentioned inside some comments (for example, one gamer addressing another) were not removed. Only contact details were scrubbed.
@@ -328,7 +388,7 @@ Confusion matrix (`outputs/results/test_confusion_matrix.png`):
 - pre-sort the ambiguous lexicon matches;
 - write the challenge set and this README.
 
-**My own work and checks.** `<to complete: what you reviewed, changed, ran (the Kaggle training run), verified by hand, and which decisions are yours>`.
+**My own work and checks.** I ran the training and evaluation on Google Colab (T4) and saved the results in `outputs/results/`. `<to complete: what else you reviewed, changed or verified by hand, and which decisions are yours>`.
 
 I understand and can explain all submitted code.
 

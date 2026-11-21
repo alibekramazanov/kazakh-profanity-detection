@@ -1,0 +1,49 @@
+id,text,label,prob,pred,domain,label_method,ru_profanity
+ch_p00,"Телефон екі күнде істен шықты, қотақбас сатушы ақшамды қайтармай жүр",1,0.9996222,1,challenge_market,handwritten,0
+ch_p01,"Шешеңнің амы, курьер үш сағат кешікті",1,0.99974185,1,challenge_market,handwritten,0
+ch_p02,"Кроссовка бір аптада жыртылды, боқ сапа",1,0.9996666,1,challenge_market,handwritten,0
+ch_p03,"Қ*тақ сияқты тауар, суреттегіге мүлде ұқсамайды",1,0.99967754,1,challenge_market,handwritten,0
+ch_p04,"Сатушы жалап екен, жауап та бермейді",1,9.4612624e-05,0,challenge_market,handwritten,0
+ch_p05,"Шешесігейін, зарядтағыш қызып кетеді",1,0.76020586,0,challenge_market,handwritten,0
+ch_p06,"qotaqbas magazin, tauar kelmedi",1,0.9997603,1,challenge_market,handwritten,0
+ch_p07,Бұл шаңсорғышты шығарған адамның көтіне тығу керек,1,0.99969935,1,challenge_market,handwritten,0
+ch_p08,"Наушник сыртынан әдемі, іші боқ",1,0.999673,1,challenge_market,handwritten,0
+ch_p09,Орап салған қотақбастар қорапты езіп жіберген,1,0.9995753,1,challenge_market,handwritten,0
+ch_p10,"Ақшаны алып алды да, тауар жоқ. Амыңды сігейін сендердің",1,0.9993538,1,challenge_market,handwritten,0
+ch_p11,"с**ейін мұндай сапаны, бір рет жудым түсі кетті",1,0.00019871553,0,challenge_market,handwritten,0
+ch_p12,"Каспи арқылы алдым, қаншық сатушы басқа түсін жіберді",1,0.00019035942,0,challenge_market,handwritten,0
+ch_p13,Тамаша тауар деп мақтаған қотақбастарға сенбеңдер,1,0.99958676,1,challenge_market,handwritten,0
+ch_p14,"Көт сияқты кресло, отырсаң сықырлайды",1,0.99968123,1,challenge_market,handwritten,0
+ch_p15,"Ж@лаптар, ақшамды қайтарыңдар!",1,8.648363e-05,0,challenge_market,handwritten,0
+ch_p16,"Сапасы қотақ, бағасына татымайды",1,0.99957365,1,challenge_market,handwritten,0
+ch_p17,"Мынау кофеварка емес, нағыз боқ",1,0.99970514,1,challenge_market,handwritten,0
+ch_p18,"Әкеңнің аузын сгейін, үш рет тапсырыс бердім бәрі сынық келді",1,0.9990872,1,challenge_market,handwritten,0
+ch_p19,"Shesheniń amy, telefon qyzyp ketedi",1,0.9994407,1,challenge_market,handwritten,0
+ch_p20,"Тауар жақсы екен, бірақ курьер қотақбас, есікті тепті",1,0.99960333,1,challenge_market,handwritten,0
+ch_p21,"Көйлек керемет, амы шыққан сапа екен",1,0.9996302,1,challenge_market,handwritten,0
+ch_p22,КОТАКБАС МАГАЗИН АҚШАМДЫ ҚАЙТАР,1,0.9997358,1,challenge_market,handwritten,0
+ch_p23,"Котагымды жеген курьер, бір апта күттім",1,0.9997086,1,challenge_market,handwritten,0
+ch_n00,"Тауар суреттегідей, жылдам жеткізді, рахмет!",0,9.063371e-05,0,challenge_market,handwritten,0
+ch_n01,"Өте нашар сапа, бір аптада сынды. Ақшамды қайтарыңдар!",0,7.7524135e-05,0,challenge_market,handwritten,0
+ch_n02,"Сатушы алаяқ, тауар келмеді, ешкімге кеңес бермеймін",0,7.813212e-05,0,challenge_market,handwritten,0
+ch_n03,"Жөргек жұмсақ, баланың көтенін қызартпайды, иісі жоқ",0,0.9875923,1,challenge_market,handwritten,0
+ch_n04,"Код келмеді, тапсырысты рәсімдей алмадым",0,8.284656e-05,0,challenge_market,handwritten,0
+ch_n05,Ойындағы жаңа скин керемет екен,0,0.00028797647,0,challenge_market,handwritten,0
+ch_n06,"Жақсы тауар, пиздец ұнады",0,8.853436e-05,0,challenge_market,handwritten,1
+ch_n07,"Сука, тағы кешікті",0,0.00015059269,0,challenge_market,handwritten,1
+ch_n08,"Сиқырлы ертегілер кітабы, балаларға ұнады",0,8.317079e-05,0,challenge_market,handwritten,0
+ch_n09,"Есік құлпы сапалы, орнату оңай",0,8.41511e-05,0,challenge_market,handwritten,0
+ch_n10,"Ақымақ сияқты нұсқаулық жазылған, ештеңе түсінікті емес",0,8.25236e-05,0,challenge_market,handwritten,0
+ch_n11,"Котқа арналған тамақ, мысығым жақсы жейді",0,0.00017536996,0,challenge_market,handwritten,0
+ch_n12,"Боксқа арналған қолғап, өлшемі сәйкес келді",0,0.00010889691,0,challenge_market,handwritten,0
+ch_n13,"Сапасы ж*қсы, бірақ қорабы жыртық келді",0,8.818923e-05,0,challenge_market,handwritten,0
+ch_n14,"Бағасы қымбат, бірақ сапасы тұрады",0,8.382305e-05,0,challenge_market,handwritten,0
+ch_n15,"Kerek zat eken, satushyga rahmet",0,0.00026947915,0,challenge_market,handwritten,0
+ch_n16,"Түсі өңіп кетті, екінші рет алмаймын",0,8.284656e-05,0,challenge_market,handwritten,0
+ch_n17,"Қотыр сияқты дақтар пайда болды, алмаңыздар",0,0.0001097509,0,challenge_market,handwritten,0
+ch_n18,"Амал жоқ, басқа дүкеннен алуға тура келді",0,8.4811036e-05,0,challenge_market,handwritten,0
+ch_n19,"Аман-есен жетті, орауы мықты",0,8.317079e-05,0,challenge_market,handwritten,0
+ch_n20,"Сигнал жоқ, антенна әлсіз",0,8.682211e-05,0,challenge_market,handwritten,0
+ch_n21,"Көтеру оңай, жеңіл чемодан",0,0.00017197857,0,challenge_market,handwritten,0
+ch_n22,"Шешеме сыйлыққа алдым, қатты ұнады",0,7.632233e-05,0,challenge_market,handwritten,0
+ch_n23,"Боқтайтын пікірлерге сенбеңдер, тауар жақсы",0,0.000102299855,0,challenge_market,handwritten,0

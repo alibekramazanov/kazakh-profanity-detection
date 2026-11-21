@@ -1,0 +1,77 @@
+{
+  "config": {
+    "model_name": "FacebookAI/xlm-roberta-base",
+    "seed": 42,
+    "max_length": 128,
+    "truncation": "head_tail",
+    "head_tokens": 64,
+    "train_batch_size": 32,
+    "eval_batch_size": 64,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "num_epochs": 4,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0,
+    "fp16": true,
+    "early_stopping_patience": 2,
+    "selection_metric": "val_f1_at_best_threshold",
+    "threshold_grid": [
+      0.05,
+      0.95,
+      0.01
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.1885523695324626,
+      "val_pr_auc": 0.9781996416493574,
+      "val_f1_at_0.5": 0.9271523178807947,
+      "val_best_threshold": 0.5,
+      "val_precision": 0.9090909090909091,
+      "val_recall": 0.9459459459459459,
+      "val_f1": 0.9271523178807947,
+      "seconds": 126.6
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0640898577590412,
+      "val_pr_auc": 0.9896508037727623,
+      "val_f1_at_0.5": 0.9435215946843853,
+      "val_best_threshold": 0.8,
+      "val_precision": 0.9466666666666667,
+      "val_recall": 0.9594594594594594,
+      "val_f1": 0.9530201342281879,
+      "seconds": 126.5
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0322881133060589,
+      "val_pr_auc": 0.9873687308715586,
+      "val_f1_at_0.5": 0.9627118644067797,
+      "val_best_threshold": 0.84,
+      "val_precision": 0.9726027397260274,
+      "val_recall": 0.9594594594594594,
+      "val_f1": 0.9659863945578231,
+      "seconds": 127.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0222715051165808,
+      "val_pr_auc": 0.9881843018256186,
+      "val_f1_at_0.5": 0.9659863945578231,
+      "val_best_threshold": 0.5,
+      "val_precision": 0.9726027397260274,
+      "val_recall": 0.9594594594594594,
+      "val_f1": 0.9659863945578231,
+      "seconds": 126.9
+    }
+  ],
+  "best_val_f1": 0.9659863945578231,
+  "n_train": 17120,
+  "n_val": 2028,
+  "n_truncated": {
+    "train": 112,
+    "val": 6
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "python": "3.13.16",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.23.0",
+  "scikit-learn": "1.6.1",
+  "pandas": "2.2.3",
+  "numpy": "2.4.6",
+  "device": "Tesla T4"
+}

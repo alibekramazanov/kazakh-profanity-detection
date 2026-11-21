@@ -1,0 +1,87 @@
+{
+  "split": "test",
+  "n_examples": 2028,
+  "n_profanity": 148,
+  "n_clean": 1880,
+  "threshold": 0.84,
+  "threshold_source": "validation set (max F1)",
+  "profanity_class": {
+    "precision": 0.9655172413793104,
+    "recall": 0.9459459459459459,
+    "f1": 0.9556313993174061,
+    "n": 2028,
+    "n_pos": 148
+  },
+  "accuracy": 0.9935897435897436,
+  "pr_auc": 0.9785560440187712,
+  "roc_auc": 0.998154470960322,
+  "confusion_matrix": {
+    "TN": 1875,
+    "FP": 5,
+    "FN": 8,
+    "TP": 140
+  },
+  "metrics_at_threshold_0.5": {
+    "precision": 0.94,
+    "recall": 0.9527027027027027,
+    "f1": 0.9463087248322147,
+    "n": 2028,
+    "n_pos": 148
+  },
+  "subgroups": {
+    "domain=appstore": {
+      "precision": 0.972027972027972,
+      "recall": 0.9455782312925171,
+      "f1": 0.9586206896551724,
+      "n": 1138,
+      "n_pos": 147
+    },
+    "domain=bookstore": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n": 34,
+      "n_pos": 0
+    },
+    "domain=mapping": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "n": 47,
+      "n_pos": 1
+    },
+    "domain=market": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n": 809,
+      "n_pos": 0
+    },
+    "label_method=manual (ambiguous words)": {
+      "precision": 0.95,
+      "recall": 0.9047619047619048,
+      "f1": 0.926829268292683,
+      "n": 36,
+      "n_pos": 21
+    },
+    "clean but Russian obscenity (false-positive rate)": {
+      "n": 59,
+      "fp_rate": 0.05084745762711865
+    },
+    "contains masked token": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "n": 3,
+      "n_pos": 1
+    },
+    "mostly Latin script": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "n": 22,
+      "n_pos": 2
+    }
+  },
+  "n_truncated_comments": 13
+}

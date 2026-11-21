@@ -1,0 +1,62 @@
+{
+  "split": "challenge_set",
+  "n_examples": 48,
+  "n_profanity": 24,
+  "n_clean": 24,
+  "threshold": 0.84,
+  "threshold_source": "validation set (max F1)",
+  "profanity_class": {
+    "precision": 0.95,
+    "recall": 0.7916666666666666,
+    "f1": 0.8636363636363636,
+    "n": 48,
+    "n_pos": 24
+  },
+  "accuracy": 0.875,
+  "pr_auc": 0.9614491500428999,
+  "roc_auc": 0.9496527777777778,
+  "confusion_matrix": {
+    "TN": 23,
+    "FP": 1,
+    "FN": 5,
+    "TP": 19
+  },
+  "metrics_at_threshold_0.5": {
+    "precision": 0.9523809523809523,
+    "recall": 0.8333333333333334,
+    "f1": 0.8888888888888888,
+    "n": 48,
+    "n_pos": 24
+  },
+  "subgroups": {
+    "domain=challenge_market": {
+      "precision": 0.95,
+      "recall": 0.7916666666666666,
+      "f1": 0.8636363636363636,
+      "n": 48,
+      "n_pos": 24
+    },
+    "label_method=manual (ambiguous words)": {
+      "n": 0
+    },
+    "clean but Russian obscenity (false-positive rate)": {
+      "n": 2,
+      "fp_rate": 0.0
+    },
+    "contains masked token": {
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "n": 4,
+      "n_pos": 3
+    },
+    "mostly Latin script": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "n": 3,
+      "n_pos": 2
+    }
+  },
+  "n_truncated_comments": 0
+}

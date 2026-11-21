@@ -1,0 +1,3 @@
+,pred 0 clean,pred 1 profanity
+true 0 clean,23,1
+true 1 profanity,5,19
